@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+    <meta charset="UTF-8">
+    <title>Basquetbolista</title>
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<nav th:replace="index :: navbar"></nav>
+
+<!-- Contenedor principal centrado -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+
+            <h1 class="mb-4">Perfil del Basquetbolista</h1>
+            <h2 th:text="${basquetbolista.nombre}" class="text-primary mb-3"></h2>
+
+            <!-- Tarjeta con información del jugador -->
+            <div class="card mx-auto" style="width: 18rem;">
+                <img th:if="${basquetbolista.imagen}" th:src="${basquetbolista.imagen}" class="card-img-top" th:alt="${basquetbolista.nombre}">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${basquetbolista.nombre}">Nombre del Jugador</h5>
+                    <div class="stats-info mb-3">
+                        <p class="mb-1"><strong>Dorsal:</strong> <span th:text="${basquetbolista.dorsal}"></span></p>
+                        <p class="mb-1"><strong>Equipo:</strong> <span th:text="${basquetbolista.equipo}"></span></p>
+                        <p class="mb-1"><strong>Descripción:</strong></p>
+                        <p class="card-text" th:text="${basquetbolista.descripcion}"></p>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a href="/jugadores/home/" class="btn btn-primary">Volver al inicio</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+
+</body>
+</html>

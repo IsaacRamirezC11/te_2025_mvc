@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+    <meta charset="UTF-8">
+    <title>Registrar Basquetbolista</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="index :: navbar"></nav>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>Registrar Basquetbolista</h3>
+                </div>
+                <div class="card-body">
+                    <p class="alert alert-success" th:if="${param.exito}">
+                        Basquetbolista dado de alta exitosamente
+                    </p>
+
+                    <form th:action="@{/jugadores/guardar}" th:object="${basquetbolista}" method="post">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" th:field="*{nombre}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="dorsal" class="form-label">Dorsal:</label>
+                            <input type="number" class="form-control" id="dorsal" th:field="*{dorsal}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="equipo" class="form-label">Equipo:</label>
+                            <input type="text" class="form-control" id="equipo" th:field="*{equipo}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción:</label>
+                            <textarea class="form-control" id="descripcion" th:field="*{descripcion}" rows="3"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imagen" class="form-label">URL de Imagen:</label>
+                            <input type="url" class="form-control" id="imagen" th:field="*{imagen}">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                            <a href="/jugadores/home" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+
+</body>
+</html>
