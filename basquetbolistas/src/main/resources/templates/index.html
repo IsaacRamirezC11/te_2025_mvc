@@ -10,7 +10,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand mx-auto" href="#">NBA Stats</a>
+        <a class="navbar-brand mx-auto" href="/">NBA Stats</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,7 +18,7 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Jugadores</a>
+                    <a class="nav-link" href="/jugadores/home/">Jugadores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Equipos</a>
@@ -30,7 +30,7 @@
                     <a class="nav-link" href="#">Temporadas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Estadios</a>
+                    <a class="nav-link active" href="/estadios/home/">Estadios</a>
                 </li>
             </ul>
         </div>
@@ -45,33 +45,35 @@
 
     <div class="container">
         <div class="bento-grid">
-            <div class="bento-item bento-jugadores" onclick="toggleSection('jugadores')">
+            <a href="/jugadores/home/" class="bento-item bento-jugadores">
                 <div class="bento-content">
                     <h2>Jugadores</h2>
                     <p>Descubre a las estrellas más grandes.</p>
                 </div>
-            </div>
-            <div class="bento-item bento-estadios" onclick="toggleSection('estadios')">
+            </a>
+            <a href="/estadios/home/" class="bento-item bento-estadios">
                 <div class="bento-content">
                     <h2>Estadios</h2>
                     <p>Donde la magia sucede.</p>
                 </div>
-            </div>
-            <div class="bento-item bento-estadisticas" onclick="toggleSection('estadisticas')">
+            </a>
+            <a href="/estadisticas" class="bento-item bento-estadisticas">
                 <div class="bento-content">
                     <h2>Estadísticas</h2>
                     <p>Todo en números.</p>
                 </div>
-            </div>
-            <div class="bento-item bento-galeria" onclick="toggleSection('galeria')">
+            </a>
+            <a href="/galeria" class="bento-item bento-galeria">
                 <div class="bento-content">
                     <h2>Galería</h2>
                     <p>Imágenes que impactan.</p>
                 </div>
-            </div>
+            </a>
         </div>
+    </div>
 
-        <!-- Secciones Interactivas -->
+
+    <!-- Secciones Interactivas -->
         <div id="jugadores" class="section-content">
             <h2>Jugadores Destacados</h2>
             <p>LeBron James, Stephen Curry, Giannis Antetokounmpo, Jayson Tatum, Luka Dončić y más.</p>
