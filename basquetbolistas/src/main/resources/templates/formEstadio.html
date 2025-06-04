@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+  <meta charset="UTF-8">
+  <title>Registrar Estadio</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="index :: navbar"></nav>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          <h3 th:text="${estadio.id == null ? 'Registrar Estadio' : 'Editar Estadio'}">Registrar Estadio</h3>
+        </div>
+        <div class="card-body">
+          <p class="alert alert-success" th:if="${param.exito}">Estadio registrado exitosamente</p>
+
+          <form th:action="@{${estadio.id == null ? '/estadios/guardar' : '/estadios/editar/' + estadio.id}}"
+                th:object="${estadio}" method="post">
+
+            <input type="hidden" th:field="*{id}">
+
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre:</label>
+              <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="ciudad" class="form-label">Ciudad:</label>
+              <input type="text" class="form-control" id="ciudad" th:field="*{ciudad}" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="capacidad" class="form-label">Capacidad:</label>
+              <input type="number" class="form-control" id="capacidad" th:field="*{capacidad}" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripción:</label>
+              <textarea class="form-control" id="descripcion" th:field="*{descripcion}" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="imagen" class="form-label">URL de Imagen:</label>
+              <input type="url" class="form-control" id="imagen" th:field="*{imagen}">
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary" th:text="${estadio.id == null ? 'Registrar' : 'Actualizar'}">Registrar</button>
+              <a href="/estadios/home" class="btn btn-secondary">Cancelar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>
