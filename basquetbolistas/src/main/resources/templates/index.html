@@ -38,49 +38,195 @@
 </nav>
 
 <main class="flex-fill">
-    <!-- Banner de estadios -->
-    <div class="container py-5 text-center">
-        <h1 class="display-4 fw-bold">Estadios de la NBA</h1>
-        <p class="lead">Explora los recintos donde se vive la emoción del baloncesto profesional.</p>
-    </div>
+    <section class="hero">
+        <h1>NBA Zone</h1>
+        <p>Todo sobre la NBA: jugadores, estadios, estadísticas y más.</p>
+    </section>
 
-    <!-- Lista de estadios -->
-    <div class="container mb-5">
-        <h2 class="mb-4 text-center">Estadios Destacados</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Estadio 1 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://socallandmarks.com/wp-content/uploads/2024/04/CryptocomArena00.jpg" class="card-img-top" alt="Crypto.com Arena">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Crypto.com Arena</h5>
-                        <p class="card-text">Los Angeles, CA - Casa de Los Angeles Lakers y Clippers</p>
-                    </div>
+    <div class="container">
+        <div class="bento-grid">
+            <div class="bento-item bento-jugadores" onclick="toggleSection('jugadores')">
+                <div class="bento-content">
+                    <h2>Jugadores</h2>
+                    <p>Descubre a las estrellas más grandes.</p>
                 </div>
             </div>
-            <!-- Estadio 2 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Chase_Center.jpg" class="card-img-top" alt="Chase Center">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Chase Center</h5>
-                        <p class="card-text">San Francisco, CA - Casa de Golden State Warriors</p>
-                    </div>
+            <div class="bento-item bento-estadios" onclick="toggleSection('estadios')">
+                <div class="bento-content">
+                    <h2>Estadios</h2>
+                    <p>Donde la magia sucede.</p>
                 </div>
             </div>
-            <!-- Estadio 3 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://haslamsports.com/wp-content/uploads/2023/08/24_WEB_HSG_FF-BG.jpg" class="card-img-top" alt="Fiserv Forum">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Fiserv Forum</h5>
-                        <p class="card-text">Milwaukee, WI - Casa de Milwaukee Bucks</p>
-                    </div>
+            <div class="bento-item bento-estadisticas" onclick="toggleSection('estadisticas')">
+                <div class="bento-content">
+                    <h2>Estadísticas</h2>
+                    <p>Todo en números.</p>
+                </div>
+            </div>
+            <div class="bento-item bento-galeria" onclick="toggleSection('galeria')">
+                <div class="bento-content">
+                    <h2>Galería</h2>
+                    <p>Imágenes que impactan.</p>
                 </div>
             </div>
         </div>
+
+        <!-- Secciones Interactivas -->
+        <div id="jugadores" class="section-content">
+            <h2>Jugadores Destacados</h2>
+            <p>LeBron James, Stephen Curry, Giannis Antetokounmpo, Jayson Tatum, Luka Dončić y más.</p>
+        </div>
+
+        <div id="estadios" class="section-content">
+            <h2>Estadios Emblemáticos</h2>
+            <p>Crypto.com Arena, Chase Center, Fiserv Forum, Madison Square Garden, TD Garden.</p>
+        </div>
+
+        <div id="estadisticas" class="section-content">
+            <h2>Estadísticas</h2>
+            <p>Puntos por partido, triples, rebotes, asistencias y eficiencia por temporada.</p>
+        </div>
+
+        <div id="galeria" class="section-content">
+            <h2>Galería Visual</h2>
+            <p>Fotos de partidos, mates espectaculares, momentos históricos, y fan art.</p>
+        </div>
     </div>
+
 </main>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #0a0a0a;
+        color: #fff;
+    }
+
+    h1, h2 {
+        font-family: 'Anton', sans-serif;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 2rem;
+    }
+
+    .hero {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://wallpapercave.com/wp/wp11633139.jpg') center/cover no-repeat;
+        color: white;
+        border-bottom: 4px solid #ff4500;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        color: #ccc;
+    }
+
+    .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .bento-item {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        height: 250px;
+        display: flex;
+        align-items: flex-end;
+        padding: 1rem;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .bento-item:hover {
+        transform: scale(1.05);
+    }
+
+    .bento-item::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        z-index: 1;
+    }
+
+    .bento-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .bento-content h2 {
+        margin-bottom: 0.5rem;
+    }
+
+    .bento-content p {
+        font-size: 0.9rem;
+        color: #ccc;
+    }
+
+    .bento-jugadores {
+        background-image: url('https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png');
+    }
+
+    .bento-estadios {
+        background-image: url('https://cdn.nba.com/manage/2024/08/GettyImages-2162183009-scaled.jpg');
+    }
+
+    .bento-estadisticas {
+        background-image: url('https://www.mundodeportivo.com/files/content_image_desktop_filter/uploads/2021/01/25/60e70cf568525.jpeg');
+    }
+
+    .bento-galeria {
+        background-image: url('https://library.sportingnews.com/2022-01/mejores-fotos-nba_2uco5g57dtww11mbbvotyr3i5.jpg');
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 0.4rem 1rem;
+        background-color: #ff4500;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #e63900;
+    }
+
+    .section-content {
+        display: none;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+</style>
+
+
 
 <footer th:fragment="footer" class="mt-auto text-center py-3 bg-dark text-white">
     Proyecto Final Spring
