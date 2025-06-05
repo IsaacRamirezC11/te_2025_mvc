@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+  <meta charset="UTF-8">
+  <title>Registrar Equipo</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<nav th:replace="index :: navbar"></nav>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          <h3 th:text="${equipo.id == null ? 'Registrar Equipo' : 'Editar Equipo'}"></h3>
+        </div>
+        <div class="card-body">
+          <form th:action="@{${equipo.id == null ? '/equipos/guardar' : '/equipos/editar/' + equipo.id}}"
+                th:object="${equipo}" method="post">
+
+            <input type="hidden" th:field="*{id}">
+
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre:</label>
+              <input type="text" class="form-control" id="nombre"
+                     th:field="*{nombre}" required
+                     placeholder="Ingrese el nombre del equipo">
+            </div>
+
+            <div class="mb-3">
+              <label for="ciudad" class="form-label">Ciudad:</label>
+              <input type="text" class="form-control" id="ciudad"
+                     th:field="*{ciudad}" required
+                     placeholder="Ingrese la ciudad del equipo">
+            </div>
+
+            <div class="mb-3">
+              <label for="conferencia" class="form-label">Conferencia:</label>
+              <input type="text" class="form-control" id="conferencia"
+                     th:field="*{conferencia}" required
+                     placeholder="Este o Oeste">
+            </div>
+
+            <div class="mb-3">
+              <label for="fundado" class="form-label">Año de Fundación:</label>
+              <input type="number" class="form-control" id="fundado"
+                     th:field="*{fundado}" required
+                     placeholder="Ej. 1946">
+            </div>
+
+            <div class="mb-3">
+              <label for="imagen" class="form-label">URL de la Imagen:</label>
+              <input type="text" class="form-control" id="imagen"
+                     th:field="*{imagen}"
+                     placeholder="https://ejemplo.com/logo.png">
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">
+                <span th:text="${equipo.id == null ? 'Registrar' : 'Actualizar'}">Registrar</span>
+              </button>
+              <a href="/equipos/home/" class="btn btn-secondary">Cancelar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+
+</body>
+</html>

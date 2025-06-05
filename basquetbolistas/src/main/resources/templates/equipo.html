@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head">
+  <meta charset="UTF-8">
+  <title>Equipo</title>
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<nav th:replace="index :: navbar"></nav>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h1 class="mb-4">Perfil del Equipo</h1>
+      <h2 th:text="${equipo.nombre}" class="text-primary mb-3"></h2>
+
+      <div class="card mx-auto" style="max-width: 500px;">
+        <img th:if="${equipo.imagen}" th:src="${equipo.imagen}" class="card-img-top"
+             th:alt="${equipo.nombre}" style="height: 300px; object-fit: cover;">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${equipo.nombre}">Nombre del Equipo</h5>
+          <p><strong>Ciudad:</strong> <span th:text="${equipo.ciudad}"></span></p>
+          <p><strong>Conferencia:</strong> <span th:text="${equipo.conferencia}"></span></p>
+          <p><strong>Fundado en:</strong> <span th:text="${equipo.fundado}"></span></p>
+
+          <div class="d-grid gap-2">
+            <a th:href="@{/equipos/editar/{id}(id=${equipo.id})}" class="btn btn-warning mb-2">Editar</a>
+            <a th:href="@{/equipos/eliminar/{id}(id=${equipo.id})}" class="btn btn-danger mb-2"
+               onclick="return confirm('¿Estás seguro de eliminar este equipo?')">Eliminar</a>
+            <a href="/equipos/home/" class="btn btn-primary">
+              <i class="fas fa-home"></i> Volver al inicio
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer th:replace="index :: footer"></footer>
+<div th:replace="index :: jsincludes"></div>
+</body>
+</html>
