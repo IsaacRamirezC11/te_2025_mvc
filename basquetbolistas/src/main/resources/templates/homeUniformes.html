@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<!DOCTYPE html> <html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head"></head>
 <body>
-<h1>Home uniformes</h1>
+<nav th:replace="index :: navbar"></nav>
+<main class="container mt-5">
+    <h1 class="text-center mb-4">Uniformes</h1>
+    <a class="btn btn-success mb-3" th:href="@{/uniformes/nuevo}">Agregar Uniforme</a>
+    <div class="row row-cols-1 row-cols-md-3 g-4"> <div class="col" th:each="uniforme : ${uniformes}">
+        <div class="card h-100"> <img th:src="${uniforme.imagen}" class="card-img-top" alt="Uniforme">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${uniforme.nombreJugador} + ' - ' + ${uniforme.nombreEquipo}"></h5>
+                <p class="card-text" th:text="'Talla camiseta: ' + ${uniforme.tallaCamiseta} + ', Short: ' + ${uniforme.tallaShort}"></p>
+                <a th:href="@{/uniformes/ver/{id}(id=${uniforme.id})}" class="btn btn-primary">Ver</a>
+                <a th:href="@{/uniformes/editar/{id}(id=${uniforme.id})}" class="btn btn-warning">Editar</a>
+                <a th:href="@{/uniformes/eliminar/{id}(id=${uniforme.id})}" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+<footer th:replace="index :: footer"></footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head"></head>
 <body>
-<h1>Form Uniformes</h1>
+<nav th:replace="index :: navbar"></nav>
+<main class="container mt-5">
+    <h2 th:text="${uniforme.id != null} ? 'Editar Uniforme' : 'Nuevo Uniforme'"></h2>
+    <form th:action="@{${uniforme.id != null} ? '/uniformes/editar/' + ${uniforme.id} : '/uniformes/guardar'}" th:object="${uniforme}" method="post">
+        <div class="mb-3"> <label for="numero" class="form-label">Número</label>
+            <input type="number" class="form-control" id="numero" th:field="*{numero}" required> </div>
+        <div class="mb-3">
+            <label for="tallaCamiseta" class="form-label">Talla Camiseta</label>
+            <input type="text" class="form-control" id="tallaCamiseta" th:field="*{tallaCamiseta}" required>
+        </div> <div class="mb-3">
+        <label for="tallaShort" class="form-label">Talla Short</label>
+        <input type="text" class="form-control" id="tallaShort" th:field="*{tallaShort}" required>
+    </div>
+        <div class="mb-3">
+            <label for="colorPrimario" class="form-label">Color Primario</label>
+            <input type="text" class="form-control" id="colorPrimario" th:field="*{colorPrimario}">
+        </div>
+        <div class="mb-3">
+            <label for="colorSecundario" class="form-label">Color Secundario</label>
+            <input type="text" class="form-control" id="colorSecundario" th:field="*{colorSecundario}">
+        </div>
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea class="form-control" id="descripcion" th:field="*{descripcion}"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="nombreEquipo" class="form-label">Equipo</label>
+            <input type="text" class="form-control" id="nombreEquipo" th:field="*{nombreEquipo}">
+        </div>
+        <div class="mb-3">
+            <label for="nombreJugador" class="form-label">Jugador</label>
+            <input type="text" class="form-control" id="nombreJugador" th:field="*{nombreJugador}">
+        </div>
+        <div class="mb-3">
+            <label for="marcaCalzado" class="form-label">Marca Calzado</label>
+            <input type="text" class="form-control" id="marcaCalzado" th:field="*{marcaCalzado}">
+        </div>
+        <div class="mb-3">
+            <label for="colorCalzado" class="form-label">Color Calzado</label>
+            <input type="text" class="form-control" id="colorCalzado" th:field="*{colorCalzado}">
+        </div>
+        <div class="mb-3">
+            <label for="imagen" class="form-label">Imagen URL</label>
+            <input type="text" class="form-control" id="imagen" th:field="*{imagen}">
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+    </form>
+</main>
+<footer th:replace="index :: footer"></footer>
 </body>
 </html>

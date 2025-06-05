@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Página principal de uniformes</h1>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: head"></head>
+<body> <nav th:replace="index :: navbar"></nav>
+<main class="container mt-5">
+    <h2>Detalle del Uniforme</h2>
+    <div class="card">
+        <img th:src="${uniforme.imagen}" class="card-img-top" alt="Uniforme">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${uniforme.nombreJugador} + ' - ' + ${uniforme.nombreEquipo}"></h5>
+            <p class="card-text"><strong>Número:</strong>
+                <span th:text="${uniforme.numero}"></span>
+            </p>
+            <p class="card-text">
+                <strong>Tallas:</strong> Camiseta:
+                <span th:text="${uniforme.tallaCamiseta}"></span>, Short:
+                <span th:text="${uniforme.tallaShort}"></span>
+            </p>
+            <p class="card-text">
+                <strong>Colores:</strong>
+                <span th:text="${uniforme.colorPrimario}"></span> /
+                <span th:text="${uniforme.colorSecundario}"></span>
+            </p>
+            <p class="card-text">
+                <strong>Calzado:</strong>
+                <span th:text="${uniforme.marcaCalzado}"></span> -
+                <span th:text="${uniforme.colorCalzado}"></span>
+            </p>
+            <p class="card-text">
+                <strong>Descripción:</strong>
+                <span th:text="${uniforme.descripcion}"></span>
+            </p>
+        </div>
+    </div>
+</main>
+<footer th:replace="index :: footer"></footer>
 </body>
 </html>
