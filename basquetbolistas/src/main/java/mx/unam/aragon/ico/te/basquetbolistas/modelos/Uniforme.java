@@ -1,6 +1,5 @@
 package mx.unam.aragon.ico.te.basquetbolistas.modelos;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

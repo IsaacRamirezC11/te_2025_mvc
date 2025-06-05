@@ -1,8 +1,5 @@
 package mx.unam.aragon.ico.te.basquetbolistas.controladores;
 
-
-
-
 import mx.unam.aragon.ico.te.basquetbolistas.modelos.Uniforme;
 import mx.unam.aragon.ico.te.basquetbolistas.servicios.UniformeService;
 import org.springframework.beans.factory.annotation.Autowired;
